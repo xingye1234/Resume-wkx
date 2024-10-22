@@ -31,8 +31,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className="fixed top-0 z-10 w-full flex justify-between items-center border-b
-    px-8 md:px-16 border-gray-700 py-4 text-white backdrop-blur-md bg-black"
+      className="fixed top-0 z-10 w-full flex justify-between items-center border-b box-border
+    px-4 md:px-16 border-gray-700 py-4 text-white backdrop-blur-md bg-black"
     >
       <a
         href="#home"
@@ -115,7 +115,7 @@ const Navbar = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{duration:0.3}}
           whileTap={{ opacity: 0, x: -200 }}
-          className="fixed top-0 left-0 min-w-[150px] h-screen bg-black/40 z-10 text-center pt-16"
+          className="fixed top-0 left-0 min-w-[150px] h-screen bg-black/80 z-10 text-center pt-16"
         >
           <ul className="flex flex-col gap-4 py-4 sm:hidden text-md md:text-lg gap-x-4 items-center">
             {navs.map((item) => {
@@ -132,7 +132,7 @@ const Navbar = () => {
           </ul>
 
           <ul className="flex flex-wrap sm:hidden gap-x-2 items-center justify-center">
-            <a
+            {/* <a
               href=""
               className="text-lg md:text-2xl opacity-50 hover:opacity-100 transition-all duration-500"
             >
@@ -155,10 +155,10 @@ const Navbar = () => {
               <li>
                 <BsTwitterX />
               </li>
-            </a>
+            </a> */}
             <a
               href=""
-              className="text-md md:text-xl opacity-50 hover:opacity-100 transition-all duration-500"
+              className="text-lg md:text-xl opacity-50 hover:opacity-100 transition-all duration-500"
             >
               <li>
                 <BsGithub />
@@ -166,7 +166,7 @@ const Navbar = () => {
             </a>
             <a
               href=""
-              className="text-md md:text-xl opacity-50 hover:opacity-100 transition-all duration-500"
+              className="text-lg md:text-xl opacity-50 hover:opacity-100 transition-all duration-500"
             >
               <li>
                 <BsChat />

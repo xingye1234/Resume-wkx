@@ -19,7 +19,7 @@ const Tech = () => {
       className="w-full min-h-[70vh] flex flex-col flex-wrap items-center justify-center md:gap-10 p-5"
     >
       <motion.h1
-        className="text-7xl mb-8"
+        className="text-5xl md:text-7xl mb-8"
         variants={{ ...variants, hidden: { opacity: 0, y: -50 } }}
         initial="hidden"
         whileInView="visible"

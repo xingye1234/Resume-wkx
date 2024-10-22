@@ -8,5 +8,8 @@ export default defineConfig(({mode }) => {
   return {
     plugins: [react()],
     base: env.NODE_ENV === "production" ? "/Resume-wkx/" : "",
+    server:{
+      host: true,
+    }
   };
 });

@@ -58,7 +58,7 @@ const Projects = () => {
 const ProJectCard = ({ project }: { project: Project }) => {
   return (
     <ScrollReveal>
-      <div className="flex flex-col items-center gap-8 md:flex-row md:gap-24">
+      <div className="flex flex-col  gap-8 md:flex-row md:gap-24">
         {/* <img
           src={project.image}
           alt=""
