@@ -25,7 +25,7 @@ const Navbar = () => {
     setisOpen(!isOpen);
   };
   const handleLanguageChange = () => {
-    setLanguage(() => language === "en" ? "zh-cn" : "en");
+    setLanguage(() => (language === "en" ? "zh-cn" : "en"));
   };
 
   return (
@@ -100,13 +100,13 @@ const Navbar = () => {
             <BsChat />
           </li>
         </a>
-     
-          <li
-            onClick={handleLanguageChange}
-            className="text-md cursor-pointer md:text-lg opacity-50 hover:opacity-100 transition-all duration-500"
-          >
-            <BsTranslate />
-          </li>
+
+        <li
+          onClick={handleLanguageChange}
+          className="text-md cursor-pointer md:text-lg opacity-50 hover:opacity-100 transition-all duration-500"
+        >
+          <BsTranslate />
+        </li>
       </ul>
 
       <div className="sm:hidden">
@@ -121,7 +121,6 @@ const Navbar = () => {
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3 }}
-          whileTap={{ opacity: 0, x: -200 }}
           className="fixed top-0 left-0 min-w-[150px] h-screen bg-black/80 z-10 text-center pt-16"
         >
           <ul className="flex flex-col gap-4 py-4 sm:hidden text-md md:text-lg gap-x-4 items-center">
@@ -132,7 +131,7 @@ const Navbar = () => {
                   key={item.id}
                   className="opacity-50 hover:opacity-100 transition-all duration-500"
                 >
-                  <li>{item.name}</li>
+                  <li>{t(item.name)}</li>
                 </a>
               );
             })}
@@ -179,16 +178,13 @@ const Navbar = () => {
                 <BsChat />
               </li>
             </a>
-            <a
-              href="javascript:;"
-              title="wechat 13635985831"
-              className="text-lg md:text-xl opacity-50 hover:opacity-100 transition-all duration-500"
+
+            <li
               onClick={handleLanguageChange}
+              className="text-lg cursor-pointer md:text-xl opacity-50 hover:opacity-100 transition-all duration-500"
             >
-              <li>
-                <BsTranslate />
-              </li>
-            </a>
+              <BsTranslate />
+            </li>
           </ul>
         </motion.div>
       )}
