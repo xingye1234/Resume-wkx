@@ -6,12 +6,15 @@ import {
   BiLogoVuejs,
 } from "react-icons/bi";
 import { motion } from "framer-motion";
+import { I18n, useIn18 } from "../context/in18context";
 
 const Tech = () => {
   const variants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
   };
+
+  const {t}:I18n = useIn18()!
 
   return (
     <section
@@ -26,7 +29,7 @@ const Tech = () => {
         transition={{ duration: 0.7, delay: 0.4 }}
         // viewport={{ once: true, amount: 0.5 }}
       >
-        Technologies
+        {t("tech")}
       </motion.h1>
       <div className="flex flex-wrap items-center justify-center gap-10">
         <motion.div

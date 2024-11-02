@@ -1,41 +1,55 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { I18n, useIn18 } from "../context/in18context";
 
 type Project = {
   name: string;
   description: string;
   technologies: string[];
   image: string;
+  times:string;
 };
 
 const projects: Project[] = [
   {
-    name: "江西美术馆数字藏品库",
-    description: "主要用于展示美术馆藏品以及藏品细节查看",
+    name: "projects.one.title",
+    times:"2024.07-2024.09",
+    description: "projects.one.description",
     technologies: ["Vue", "Unocss", "Typescript"],
     image: "https://via.placeholder.com/150",
   },
   {
-    name: "AI 智能问答",
-    description: "针对 B 端客户以及内部人员使用便利，制作的问答知识库",
+    name: "projects.two.title",
+    times:"2024.05-2024.07",
+    description: "projects.two.description",
     technologies: ["React", "Nextjs", "Typescript", "TailWindCSS"],
     image: "https://via.placeholder.com/150",
   },
   {
-    name: "南钞大屏可视化",
-    description: "该项目将各项数据可视化处理，直观展示了各项计划进度、产品作废率和成品率以及车间各项数据变化，更加方便于领导管理",
+    name: "projects.three.title",
+    times:"2024.03-2024.04",
+    description: "projects.three.description",
     technologies: ["Vue", "Echarts"],
     image: "https://via.placeholder.com/150",
   },
   {
-    name: "化工网盘数据平台",
-    description: "实现网盘数据管理",
-    technologies: ["Vue", "Vite", "Typescript"],
+    name: "projects.four.title",
+    times:"2023.10-2023.12",
+    description: "projects.four.description",
+    technologies: ["Vue", "Vite", "Typescript","ElementUI"],
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    name: "projects.five.title",
+    times:"2023.12-2024.01",
+    description: "projects.five.description",
+    technologies: ["Vue2", "Corejs", "ElementUI"],
     image: "https://via.placeholder.com/150",
   },
 ];
 
 const Projects = () => {
+  const {t}:I18n = useIn18()!
   return (
     <div
       id="projects"
@@ -43,7 +57,7 @@ const Projects = () => {
     >
       <ScrollReveal>
         <h1 className="text-4xl font-light text-white md:text-6xl">
-          My Projects
+          {t('myprojects')}
         </h1>
       </ScrollReveal>
       <div className="flex flex-col max-w-[1000px] gap-16 text-white">
@@ -56,6 +70,8 @@ const Projects = () => {
 };
 
 const ProJectCard = ({ project }: { project: Project }) => {
+
+  const {t}:I18n = useIn18()!
   return (
     <ScrollReveal>
       <div className="flex flex-col  gap-8 md:flex-row md:gap-24">
@@ -70,8 +86,11 @@ const ProJectCard = ({ project }: { project: Project }) => {
 
         <div className="flex flex-col gap-5 flex-grow">
           <div className="flex flex-col gap-3">
-            <div className="text-xl font-semibold">{project.name}</div>
-            <p className="text-gray-400">{project.description}</p>
+            <div className="text-xl font-semibold flex justify-between">
+              <p>{t(project.name)}</p>
+              <p>{project.times}</p>
+            </div>
+            <p className="text-gray-400">{t(project.description)}</p>
           </div>
           <div className="flex flex-wrap gap-5">
             {project.technologies.map((item, idx) => (  

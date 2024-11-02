@@ -1,13 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiMenu, BiX } from "react-icons/bi";
-import {
-  BsChat,
-  BsGithub,
-  BsLinkedin,
-  BsTwitterX,
-  BsYoutube,
-} from "react-icons/bs";
+import { BsChat, BsGithub, BsTranslate } from "react-icons/bs";
 import { motion } from "framer-motion";
+import { I18n, useIn18 } from "../context/in18context";
 
 type NavItem = {
   id: number;
@@ -16,17 +11,21 @@ type NavItem = {
 };
 
 const navs: NavItem[] = [
-  { id: 2, name: "Home", link: "#home" },
-  { id: 3, name: "Tech", link: "#tech" },
-  { id: 4, name: "Projects", link: "#projects" },
-  { id: 5, name: "Contact", link: "#contact" },
+  { id: 2, name: "nav.home", link: "#home" },
+  { id: 3, name: "nav.tech", link: "#tech" },
+  { id: 4, name: "nav.projects", link: "#projects" },
+  { id: 5, name: "nav.contact", link: "#contact" },
 ];
 
 const Navbar = () => {
   const [isOpen, setisOpen] = useState(false);
+  const { language, setLanguage, t }: I18n = useIn18()!;
 
   const handleIsOpen = () => {
     setisOpen(!isOpen);
+  };
+  const handleLanguageChange = () => {
+    setLanguage(() => language === "en" ? "zh-cn" : "en");
   };
 
   return (
@@ -50,7 +49,7 @@ const Navbar = () => {
               key={item.id}
               className="opacity-50 hover:opacity-100 transition-all duration-500"
             >
-              <li>{item.name}</li>
+              <li>{t(item.name)}</li>
             </a>
           );
         })}
@@ -101,7 +100,15 @@ const Navbar = () => {
             <BsChat />
           </li>
         </a>
+     
+          <li
+            onClick={handleLanguageChange}
+            className="text-md cursor-pointer md:text-lg opacity-50 hover:opacity-100 transition-all duration-500"
+          >
+            <BsTranslate />
+          </li>
       </ul>
+
       <div className="sm:hidden">
         {isOpen ? (
           <BiX className="text-3xl" onClick={handleIsOpen} />
@@ -113,7 +120,7 @@ const Navbar = () => {
         <motion.div
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{duration:0.3}}
+          transition={{ duration: 0.3 }}
           whileTap={{ opacity: 0, x: -200 }}
           className="fixed top-0 left-0 min-w-[150px] h-screen bg-black/80 z-10 text-center pt-16"
         >
@@ -170,6 +177,16 @@ const Navbar = () => {
             >
               <li>
                 <BsChat />
+              </li>
+            </a>
+            <a
+              href="javascript:;"
+              title="wechat 13635985831"
+              className="text-lg md:text-xl opacity-50 hover:opacity-100 transition-all duration-500"
+              onClick={handleLanguageChange}
+            >
+              <li>
+                <BsTranslate />
               </li>
             </a>
           </ul>

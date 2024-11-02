@@ -1,7 +1,11 @@
-import photo from "/public/avatar.jpg";
+import { I18n, useIn18 } from "../context/in18context";
+import photo from "/avatar.jpg";
 import { motion } from "framer-motion";
 
 const Hero = () => {
+
+  const {t}:I18n = useIn18()!
+
   return (
     <section
       id="home"
@@ -35,14 +39,10 @@ const Hero = () => {
           className="bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent
       opacity-80 text-xl font-semibold hover:opacity-100 transition-all duration-300 tracking-widest"
         >
-          Frontend Developer
+          {t('subjects.subject')}
         </h3>
         <p className="text-gray-400">
-          I'm a web developer skilled in React, Next.js, Vue and Tailwind,
-          focused on building clean, scalable applications. From front-end
-          design to seamless database integration with PostgreSQL, I create
-          efficient solutions for dynamic user experiences. Let's build
-          something great together!
+          {t('description')}
         </p>
       </motion.div>
     </section>
