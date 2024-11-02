@@ -1,4 +1,3 @@
-import { BsArrow90DegRight, BsArrowBarRight } from "react-icons/bs";
 import { I18n, useIn18 } from "../context/in18context";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
