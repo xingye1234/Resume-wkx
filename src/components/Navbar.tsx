@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BiMenu, BiX } from "react-icons/bi";
 import { BsChat, BsGithub, BsTranslate } from "react-icons/bs";
 import { motion } from "framer-motion";
