@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
 import type { SetStateAction } from "react";
 import { language as languageText } from "../data/language";
 
@@ -8,11 +8,17 @@ export interface I18n {
   t: (str: string) => string;
 }
 
-export const In18Context = createContext<I18n | null>(null);
+const I18nContext = createContext<I18n | null>(null);
 
-export const useIn18 = () => useContext(In18Context);
+export function useI18n() {
+  const context = useContext(I18nContext);
+  if (!context) {
+    throw new Error("useI18n must be used within a I18nProvider");
+  }
+  return context;
+}
 
-export const useTransformLanguage = (type: string) => {
+const useTransformLanguage = (type: string) => {
   const lang = languageText[type];
   return (str: string) => {
     const _str = str.split(".");
@@ -20,7 +26,7 @@ export const useTransformLanguage = (type: string) => {
 
     if (_str.length === 1) return lang[_str[0].toLowerCase()];
 
-    let val = lang[_str[0]];
+    const val = lang[_str[0]];
     _str.shift();
 
     return _str.reduce((acc, cur) => {
@@ -29,20 +35,20 @@ export const useTransformLanguage = (type: string) => {
       }
       return acc;
     }, val);
-
   };
 };
 
 export const I18nProvider = ({ children }: { children: React.ReactNode }) => {
   const [language, setLanguage] = useState(
-    localStorage.getItem("language") || "en"
+    localStorage.getItem("language") || "en",
   );
 
   useEffect(() => {
     localStorage.setItem("language", language);
   }, [language]);
+
   return (
-    <In18Context.Provider
+    <I18nContext.Provider
       value={{
         language,
         setLanguage,
@@ -50,6 +56,6 @@ export const I18nProvider = ({ children }: { children: React.ReactNode }) => {
       }}
     >
       {children}
-    </In18Context.Provider>
+    </I18nContext.Provider>
   );
 };

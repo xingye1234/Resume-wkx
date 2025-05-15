@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BiMenu, BiX } from "react-icons/bi";
 import { BsChat, BsGithub, BsTranslate } from "react-icons/bs";
 import { motion } from "framer-motion";
-import { I18n, useIn18 } from "../context/in18context";
+import { useI18n } from "../context/in18context";
 
 type NavItem = {
   id: number;
@@ -19,7 +19,7 @@ const navs: NavItem[] = [
 
 const Navbar = () => {
   const [isOpen, setisOpen] = useState(false);
-  const { language, setLanguage, t }: I18n = useIn18()!;
+  const { language, setLanguage, t } = useI18n();
 
   const handleIsOpen = () => {
     setisOpen(!isOpen);
@@ -29,32 +29,28 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      className="fixed top-0 z-10 w-full flex justify-between items-center border-b box-border
-    px-4 md:px-16 border-gray-700 py-4 text-white backdrop-blur-md bg-black"
-    >
+    <nav className="fixed top-0 z-10 box-border flex w-full items-center justify-between border-b border-gray-700 bg-black px-4 py-4 text-white backdrop-blur-md md:px-16">
       <a
         href="#home"
-        className="bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-transparent
-      opacity-80 text-3xl font-semibold hover:opacity-100 transition-all duration-300 tracking-widest"
+        className="bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-3xl font-semibold tracking-widest text-transparent opacity-80 transition-all duration-300 hover:opacity-100"
       >
         WKX
       </a>
 
-      <ul className="hidden sm:flex text-md md:text-lg gap-x-4 items-center">
+      <ul className="text-md hidden items-center gap-x-4 sm:flex md:text-lg">
         {navs.map((item) => {
           return (
             <a
               href={item.link}
               key={item.id}
-              className="opacity-50 hover:opacity-100 transition-all duration-500"
+              className="opacity-50 transition-all duration-500 hover:opacity-100"
             >
               <li>{t(item.name)}</li>
             </a>
           );
         })}
       </ul>
-      <ul className="hidden sm:flex gap-x-3 items-center">
+      <ul className="hidden items-center gap-x-3 sm:flex">
         {/* <a
           href=""
           title="youtube"
@@ -85,7 +81,7 @@ const Navbar = () => {
         <a
           href="https://github.com/xingye1234"
           title="github"
-          className="text-md md:text-lg opacity-50 hover:opacity-100 transition-all duration-500"
+          className="text-md opacity-50 transition-all duration-500 hover:opacity-100 md:text-lg"
         >
           <li>
             <BsGithub />
@@ -94,7 +90,7 @@ const Navbar = () => {
         <a
           href=""
           title="wechat 13635985831"
-          className="text-md md:text-lg opacity-50 hover:opacity-100 transition-all duration-500"
+          className="text-md opacity-50 transition-all duration-500 hover:opacity-100 md:text-lg"
         >
           <li>
             <BsChat />
@@ -103,7 +99,7 @@ const Navbar = () => {
 
         <li
           onClick={handleLanguageChange}
-          className="text-md cursor-pointer md:text-lg opacity-50 hover:opacity-100 transition-all duration-500"
+          className="text-md cursor-pointer opacity-50 transition-all duration-500 hover:opacity-100 md:text-lg"
         >
           <BsTranslate />
         </li>
@@ -121,15 +117,15 @@ const Navbar = () => {
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed top-0 left-0 min-w-[150px] h-screen bg-black/80 z-10 text-center pt-16"
+          className="fixed left-0 top-0 z-10 h-screen min-w-[150px] bg-black/80 pt-16 text-center"
         >
-          <ul className="flex flex-col gap-4 py-4 sm:hidden text-md md:text-lg gap-x-4 items-center">
+          <ul className="text-md flex flex-col items-center gap-4 gap-x-4 py-4 sm:hidden md:text-lg">
             {navs.map((item) => {
               return (
                 <a
                   href={item.link}
                   key={item.id}
-                  className="opacity-50 hover:opacity-100 transition-all duration-500"
+                  className="opacity-50 transition-all duration-500 hover:opacity-100"
                 >
                   <li>{t(item.name)}</li>
                 </a>
@@ -137,7 +133,7 @@ const Navbar = () => {
             })}
           </ul>
 
-          <ul className="flex flex-wrap sm:hidden gap-x-2 items-center justify-center">
+          <ul className="flex flex-wrap items-center justify-center gap-x-2 sm:hidden">
             {/* <a
               href=""
               className="text-lg md:text-2xl opacity-50 hover:opacity-100 transition-all duration-500"
@@ -164,7 +160,7 @@ const Navbar = () => {
             </a> */}
             <a
               href=""
-              className="text-lg md:text-xl opacity-50 hover:opacity-100 transition-all duration-500"
+              className="text-lg opacity-50 transition-all duration-500 hover:opacity-100 md:text-xl"
             >
               <li>
                 <BsGithub />
@@ -172,7 +168,7 @@ const Navbar = () => {
             </a>
             <a
               href=""
-              className="text-lg md:text-xl opacity-50 hover:opacity-100 transition-all duration-500"
+              className="text-lg opacity-50 transition-all duration-500 hover:opacity-100 md:text-xl"
             >
               <li>
                 <BsChat />
@@ -181,7 +177,7 @@ const Navbar = () => {
 
             <li
               onClick={handleLanguageChange}
-              className="text-lg cursor-pointer md:text-xl opacity-50 hover:opacity-100 transition-all duration-500"
+              className="cursor-pointer text-lg opacity-50 transition-all duration-500 hover:opacity-100 md:text-xl"
             >
               <BsTranslate />
             </li>

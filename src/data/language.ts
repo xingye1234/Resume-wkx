@@ -15,7 +15,7 @@ export const language: Record<string, any> = {
     myprojects: "My Projects",
     projects: {
       one: {
-        title: "Art Museum digital collection library PC end and mobile end",
+        title: "Art Museum digital collection library PC and H5",
         description:
           "It is mainly used to display the collection of the museum and view the details of the collection",
       },
@@ -60,7 +60,7 @@ export const language: Record<string, any> = {
     myprojects: "项目经历",
     projects: {
       one: {
-        title: "江西美术馆数字藏品库PC端和移动端",
+        title: "江西美术馆数字藏品库PC/H5",
         description: "主要用于展示美术馆藏品以及藏品细节查看。",
       },
       two: {
