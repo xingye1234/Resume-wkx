@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiMenu, BiX } from "react-icons/bi";
 import { BsChat, BsGithub, BsTranslate } from "react-icons/bs";
 import { motion } from "framer-motion";
 import { useI18n } from "../context/in18context";
+import { useClientWH } from "../hooks/useClientWH";
 
 type NavItem = {
   id: number;
@@ -20,6 +21,7 @@ const navs: NavItem[] = [
 const Navbar = () => {
   const [isOpen, setisOpen] = useState(false);
   const { language, setLanguage, t } = useI18n();
+  const { isMobile } = useClientWH();
 
   const handleIsOpen = () => {
     setisOpen(!isOpen);
@@ -34,7 +36,7 @@ const Navbar = () => {
         href="#home"
         className="bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-3xl font-semibold tracking-widest text-transparent opacity-80 transition-all duration-300 hover:opacity-100"
       >
-        WKX
+        {isMobile ? "WKX" : "KeXing Wang"}
       </a>
 
       <ul className="text-md hidden items-center gap-x-4 sm:flex md:text-lg">
