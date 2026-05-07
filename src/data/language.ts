@@ -10,7 +10,7 @@ export const language: Record<string, any> = {
       subject: "Fronted Developer",
     },
     description:
-      "I'm a web developer skilled in React, Next.js, Vue and Tailwind, focused on building clean, scalable applications. From front-end design to  database integration, I create efficient solutions for dynamic user experiences. Let's build something great together!",
+      "I'm a web developer skilled in React, Next.js, Vue and Tailwind, focused on building clean, scalable applications. From front-end design to  database integration, I create efficient solutions for dynamic user experiences. Let‘s explore the world of coding together!",
     tech: "Technologies",
     myprojects: "My Projects",
     projects: {
@@ -55,7 +55,7 @@ export const language: Record<string, any> = {
       subject: "前端工程师",
     },
     description:
-      "我是一名熟练掌握React、Next. js、Vue和TailWind的Web开发人员，专注于构建干净、可扩展的应用程序。从前端设计到数据库集成，我为动态用户体验创建了高效的解决方案。让我们一起构建一些伟大的东西！",
+      "我是一名熟练掌握React、Next. js、Vue和TailWind的Web开发人员，专注于构建干净、可扩展的应用程序。从前端设计到数据库集成，我为动态用户体验创建了高效的解决方案。让我们一起探索编码世界吧！",
     tech: "技术栈",
     myprojects: "项目经历",
     projects: {
