@@ -27,13 +27,13 @@ const Hero = () => {
         transition={{ duration: 0.8, delay: 0.3 }}
         className="max-x-[600px] mt-10 flex flex-col items-center justify-center gap-3 text-center"
       >
-        <h1 className="bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-5xl font-semibold tracking-widest text-transparent opacity-80 transition-all duration-300 hover:opacity-100">
+        <h1 className="bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-3xl lg:text-5xl font-semibold tracking-widest text-transparent opacity-80 transition-all duration-300 hover:opacity-100">
           WangKeXing
         </h1>
-        <h3 className="bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-xl font-semibold tracking-widest text-transparent opacity-80 transition-all duration-300 hover:opacity-100">
+        <h3 className="bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-lg lg:text-xl font-semibold tracking-widest text-transparent opacity-80 transition-all duration-300 hover:opacity-100">
           {t("subjects.subject")}
         </h3>
-        <p className="text-gray-400">{t("description")}</p>
+        <p className="text-black dark:text-white text-md lg:text-xl">{t("description")}</p>
       </motion.div>
     </section>
   );

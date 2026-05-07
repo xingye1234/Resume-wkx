@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { BiMenu, BiX } from "react-icons/bi";
-import { BsChat, BsGithub, BsTranslate } from "react-icons/bs";
+import { BsChatDots, BsFillSunFill, BsGithub, BsMoon, BsTranslate } from "react-icons/bs";
 import { motion } from "framer-motion";
 import { useI18n } from "../context/in18context";
 import { useClientWH } from "../hooks/useClientWH";
+import { useThemes } from "../hooks/useThemes";
+import { div } from "framer-motion/client";
 
 type NavItem = {
   id: number;
@@ -22,16 +24,24 @@ const Navbar = () => {
   const [isOpen, setisOpen] = useState(false);
   const { language, setLanguage, t } = useI18n();
   const { isMobile } = useClientWH();
+  const { theme, setTheme } = useThemes();
 
-  const handleIsOpen = () => {
+  const handleIsOpen = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setisOpen(!isOpen);
   };
   const handleLanguageChange = () => {
     setLanguage(() => (language === "en" ? "zh-cn" : "en"));
   };
 
+
+  const handleToggleTheme = () => {
+    document.body.classList.toggle("dark");
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
+
   return (
-    <nav className="fixed top-0 z-10 box-border flex w-full items-center justify-between border-b border-gray-700 bg-black px-4 py-4 text-white backdrop-blur-md md:px-16">
+    <nav className="fixed top-0 z-10 box-border flex w-full items-center justify-between border-b border-gray-200 bg-white dark:bg-black px-4 py-4 text-white backdrop-blur-md md:px-16">
       <a
         href="#home"
         className="bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text text-3xl font-semibold tracking-widest text-transparent opacity-80 transition-all duration-300 hover:opacity-100"
@@ -39,20 +49,23 @@ const Navbar = () => {
         {isMobile ? "WKX" : "KeXing Wang"}
       </a>
 
-      <ul className="text-md hidden items-center gap-x-4 sm:flex md:text-lg">
+      {/* middle menu */}
+      <ul className="text-md hidden items-center gap-x-12 sm:flex md:text-lg pr-[80px]">
         {navs.map((item) => {
           return (
             <a
               href={item.link}
               key={item.id}
-              className="opacity-50 transition-all duration-500 hover:opacity-100"
+              className="font-bold transition-all duration-500 hover:opacity-100 text-black dark:text-white"
             >
               <li>{t(item.name)}</li>
             </a>
           );
         })}
       </ul>
-      <ul className="hidden items-center gap-x-3 sm:flex">
+
+      {/* right menu */}
+      <ul className="hidden items-center gap-x-5 sm:flex">
         {/* <a
           href=""
           title="youtube"
@@ -83,31 +96,37 @@ const Navbar = () => {
         <a
           href="https://github.com/xingye1234"
           title="github"
-          className="text-md opacity-50 transition-all duration-500 hover:opacity-100 md:text-lg"
+          className="text-md transition-all text-black dark:text-white duration-500 hover:opacity-100 md:text-lg"
         >
           <li>
             <BsGithub />
           </li>
         </a>
         <a
-          href=""
           title="wechat 13635985831"
-          className="text-md opacity-50 transition-all duration-500 hover:opacity-100 md:text-lg"
+          className="text-md  text-black dark:text-white transition-all duration-500 hover:opacity-100 md:text-lg"
         >
           <li>
-            <BsChat />
+            <BsChatDots />
           </li>
         </a>
 
         <li
           onClick={handleLanguageChange}
-          className="text-md cursor-pointer opacity-50 transition-all duration-500 hover:opacity-100 md:text-lg"
+          className="text-md cursor-pointer  text-black dark:text-white transition-all duration-500 hover:opacity-100 md:text-lg"
         >
           <BsTranslate />
         </li>
+
+        <li
+          onClick={handleToggleTheme}
+          className="text-md cursor-pointer  text-black dark:text-white transition-all duration-500 hover:opacity-100 md:text-lg"
+        >
+          {theme === "light" ? <BsMoon /> : <BsFillSunFill />}
+        </li>
       </ul>
 
-      <div className="sm:hidden">
+      <div className="sm:hidden text-black/70 dark:text-white/70">
         {isOpen ? (
           <BiX className="text-3xl" onClick={handleIsOpen} />
         ) : (
@@ -115,28 +134,29 @@ const Navbar = () => {
         )}
       </div>
       {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, x: -200 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.3 }}
-          className="fixed left-0 top-0 z-10 h-screen min-w-[150px] bg-black/80 pt-16 text-center"
-        >
-          <ul className="text-md flex flex-col items-center gap-4 gap-x-4 py-4 sm:hidden md:text-lg">
-            {navs.map((item) => {
-              return (
-                <a
-                  href={item.link}
-                  key={item.id}
-                  className="opacity-50 transition-all duration-500 hover:opacity-100"
-                >
-                  <li>{t(item.name)}</li>
-                </a>
-              );
-            })}
-          </ul>
+        <div className="fixed left-0 top-0 z-10 h-screen w-full" onClick={(e) => handleIsOpen(e)}>
+          <motion.div
+            initial={{ opacity: 0, x: -200 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3 }}
+            className="h-full max-w-[150px] bg-black/70 pt-16 text-center flex flex-col justify-between"
+          >
+            <ul className="text-md flex flex-col items-center gap-4 gap-x-4 py-4 sm:hidden md:text-lg">
+              {navs.map((item) => {
+                return (
+                  <a
+                    href={item.link}
+                    key={item.id}
+                    className="transition-all duration-500 hover:opacity-100"
+                  >
+                    <li>{t(item.name)}</li>
+                  </a>
+                );
+              })}
+            </ul>
 
-          <ul className="flex flex-wrap items-center justify-center gap-x-2 sm:hidden">
-            {/* <a
+            <ul className="flex items-center justify-center gap-x-4 sm:hidden mb-4">
+              {/* <a
               href=""
               className="text-lg md:text-2xl opacity-50 hover:opacity-100 transition-all duration-500"
             >
@@ -160,31 +180,30 @@ const Navbar = () => {
                 <BsTwitterX />
               </li>
             </a> */}
-            <a
-              href=""
-              className="text-lg opacity-50 transition-all duration-500 hover:opacity-100 md:text-xl"
-            >
-              <li>
-                <BsGithub />
+              <a
+                href="https://github.com/xingye1234"
+                target="_blank"
+                className="text-lg opacity-80 transition-all duration-500 hover:opacity-100 md:text-xl"
+              >
+                <li>
+                  <BsGithub />
+                </li>
+              </a>
+              <li
+                onClick={handleLanguageChange}
+                className="cursor-pointer opacity-80 text-lg transition-all duration-500 hover:opacity-100 md:text-xl"
+              >
+                <BsTranslate />
               </li>
-            </a>
-            <a
-              href=""
-              className="text-lg opacity-50 transition-all duration-500 hover:opacity-100 md:text-xl"
-            >
-              <li>
-                <BsChat />
+              <li
+                onClick={handleToggleTheme}
+                className="text-md cursor-pointer opacity-80 transition-all duration-500 hover:opacity-100 md:text-lg"
+              >
+                {theme === "light" ? <BsMoon /> : <BsFillSunFill />}
               </li>
-            </a>
-
-            <li
-              onClick={handleLanguageChange}
-              className="cursor-pointer text-lg opacity-50 transition-all duration-500 hover:opacity-100 md:text-xl"
-            >
-              <BsTranslate />
-            </li>
-          </ul>
-        </motion.div>
+            </ul>
+          </motion.div>
+        </div>
       )}
     </nav>
   );

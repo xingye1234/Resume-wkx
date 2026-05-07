@@ -23,7 +23,7 @@ const Tech = () => {
       className="flex min-h-[70vh] w-full flex-col flex-wrap items-center justify-center p-5 md:gap-10"
     >
       <motion.h1
-        className="mb-8 text-5xl md:text-7xl"
+        className="mb-8 text-5xl md:text-7xl text-black dark:text-white"
         variants={{ ...variants, hidden: { opacity: 0, y: -50 } }}
         initial="hidden"
         whileInView="visible"
@@ -91,7 +91,7 @@ const Tech = () => {
           whileInView="visible"
           transition={{ duration: 0.9, delay: 0.9 }}
         >
-          <SiNextdotjs className="cursor-pointer text-[80px] text-white transition-all duration-300 hover:-translate-y-5 sm:text-[100px] md:text-[120px]" />
+          <SiNextdotjs className="cursor-pointer text-[80px] text-black dark:text-white transition-all duration-300 hover:-translate-y-5 sm:text-[100px] md:text-[120px]" />
         </motion.div>
       </div>
     </section>

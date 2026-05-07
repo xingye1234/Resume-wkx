@@ -14,7 +14,7 @@ const Contact = () => {
             {t("contact")}
           </span>
         </h1>
-        <p className="text-center text-lg font-semibold text-gray-500">
+        <p className="text-center text-lg font-semibold text-black dark:text-white">
           {t("contactmedesc")}
         </p>
         <a

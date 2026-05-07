@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useI18n } from "../context/in18context";
 
-type Project = {
+export type Project = {
   name: string;
   description: string;
   technologies: string[];
@@ -10,7 +10,7 @@ type Project = {
   times: string;
 };
 
-const projects: Project[] = [
+export const projects: Project[] = [
   {
     name: "projects.one.title",
     times: "2024.07-2024.09",
@@ -48,6 +48,7 @@ const projects: Project[] = [
   },
 ];
 
+
 const Projects = () => {
   const { t } = useI18n();
   return (
@@ -56,11 +57,11 @@ const Projects = () => {
       className="flex min-h-screen w-full flex-col items-center justify-center gap-16 p-4 md:px-14 md:py-24"
     >
       <ScrollReveal>
-        <h1 className="text-4xl font-light text-white md:text-6xl">
+        <h1 className="text-4xl font-light md:text-6xl text-black dark:text-white">
           {t("myprojects")}
         </h1>
       </ScrollReveal>
-      <div className="flex max-w-[1000px] flex-col gap-16 text-white">
+      <div className="flex max-w-[1000px] flex-col gap-16 text-black dark:text-white">
         {projects.map((project, index) => (
           <ProJectCard key={index} project={project} />
         ))}
@@ -83,15 +84,15 @@ const ProJectCard = ({ project }: { project: Project }) => {
 
         <div className="flex flex-grow flex-col gap-5">
           <div className="flex flex-col gap-3">
-            <div className="flex justify-between text-xl font-semibold">
+            <div className="flex justify-between text-xl font-semibol">
               <p>{t(project.name)}</p>
               <p>{project.times}</p>
             </div>
-            <p className="text-gray-400">{t(project.description)}</p>
+            <p>{t(project.description)}</p>
           </div>
           <div className="flex flex-wrap gap-5">
             {project.technologies.map((item, idx) => (
-              <span key={idx} className="rounded-lg bg-black">
+              <span key={idx} className="rounded-lg ring-2 ring-gray-200 py-1 px-2 box-border bg-white  dark:bg-black dark:text-white">
                 {item}
               </span>
             ))}
