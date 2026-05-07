@@ -7,7 +7,7 @@ import {
 } from "react-icons/bi";
 import { motion } from "framer-motion";
 import { useI18n } from "../context/in18context";
-import { SiNextdotjs, SiNuxtdotjs } from "react-icons/si";
+import { SiNextdotjs , SiNuxt } from "react-icons/si";
 
 const Tech = () => {
   const variants = {
@@ -82,7 +82,7 @@ const Tech = () => {
           whileInView="visible"
           transition={{ duration: 0.8, delay: 0.8 }}
         >
-          <SiNuxtdotjs className="cursor-pointer text-[80px] text-green-300 transition-all duration-300 hover:-translate-y-5 hover:text-green-500 sm:text-[100px] md:text-[120px]" />
+          <SiNuxt className="cursor-pointer text-[80px] text-green-300 transition-all duration-300 hover:-translate-y-5 hover:text-green-500 sm:text-[100px] md:text-[120px]" />
         </motion.div>
 
         <motion.div
