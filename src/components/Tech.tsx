@@ -7,7 +7,7 @@ import {
 } from "react-icons/bi";
 import { motion } from "framer-motion";
 import { useI18n } from "../context/in18context";
-import { SiNextdotjs, SiNuxtdotjs } from "react-icons/si";
+import { SiNextdotjs } from "react-icons/si";
 
 const Tech = () => {
   const variants = {

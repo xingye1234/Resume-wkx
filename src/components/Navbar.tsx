@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { useI18n } from "../context/in18context";
 import { useClientWH } from "../hooks/useClientWH";
 import { useThemes } from "../hooks/useThemes";
-import { div } from "framer-motion/client";
 
 type NavItem = {
   id: number;
