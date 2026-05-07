@@ -25,7 +25,7 @@ jobs:
         run: pnpm install
       - name: 打包  ️
         run: |
-          npm run build
+          pnpm build
       - name: 部署
         # JamesIves/github-pages-deploy-action@v4  peaceiris/actions-gh-pages@v4
         uses: JamesIves/github-pages-deploy-action@v4
