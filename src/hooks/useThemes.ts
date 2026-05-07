@@ -2,7 +2,7 @@ import { useState } from "react";
 import { getLocalStorage, setLocalStorage } from "../utils/storage";
 
 export const useThemes = () => {
-  const [theme, setTheme] = useState<string>(getLocalStorage("theme") || "light");
+  const [theme, setTheme] = useState<'light' | 'dark'>(getLocalStorage("theme") || "light");
 
   const setThemeAndStorage = () => {
     setTheme(pre => pre === "light" ? "dark" : "light");
