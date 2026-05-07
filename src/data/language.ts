@@ -25,7 +25,7 @@ export const language: Record<string, any> = {
           "A Q & A knowledge base that is convenient for B-side customers and internal personnel to use",
       },
       three: {
-        title: "Large screen visualization",
+        title: "Large screen visualization ",
         description:
           "The project visualization of the data lake, visual display of the schedule, product scrap rate and yield, as well as the workshop of the data changes, more convenient for leadership management",
       },
