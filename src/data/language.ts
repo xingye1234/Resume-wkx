@@ -1,4 +1,30 @@
-export const language: Record<string, unknown> = {
+export type Project = {
+  title: string;
+  description: string;
+};
+
+export type Locale = {
+  nav: {
+    home: string;
+    tech: string;
+    projects: string;
+    contact: string;
+  };
+  subjects: {
+    subject: string;
+  };
+  description: string;
+  tech: string;
+  myprojects: string;
+  projects: Record<string, Project>;
+  contact: string;
+  contactmedesc: string;
+  contactme: string;
+};
+
+export const createLanguage = <T extends string>(l: Record<T, Locale>) => l;
+
+export const language = createLanguage({
   en: {
     nav: {
       home: "Home",
@@ -85,4 +111,4 @@ export const language: Record<string, unknown> = {
     contactmedesc: "怎么联系？通过这个按钮给我发一封电子邮件，我会尽可能回复。",
     contactme: "联系我",
   },
-};
+});
