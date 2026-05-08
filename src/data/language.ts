@@ -1,4 +1,4 @@
-export const language: Record<string, any> = {
+export const language: Record<string, unknown> = {
   en: {
     nav: {
       home: "Home",

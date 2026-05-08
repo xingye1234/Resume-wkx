@@ -6,7 +6,7 @@ export const getLocalStorage = (key: string) => {
   return null;
 };
 
-export const setLocalStorage = (key: string, value: any) => {
+export const setLocalStorage = <T>(key: string, value: T) => {
   if (typeof window !== "undefined") {
     localStorage.setItem(key, JSON.stringify(value));
   }

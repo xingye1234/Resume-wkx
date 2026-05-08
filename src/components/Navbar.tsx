@@ -35,7 +35,6 @@ const Navbar = () => {
 
 
   const handleToggleTheme = () => {
-    document.body.classList.toggle("dark");
     setTheme();
   };
 
